@@ -361,3 +361,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
+/example-applications/Ginastics/GinasticsWebApi/.idea/.idea.GinasticsWebApi/.idea/
