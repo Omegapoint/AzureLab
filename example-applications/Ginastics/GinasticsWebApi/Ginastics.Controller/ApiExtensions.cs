@@ -1,14 +1,16 @@
 using System;
 using Ginastics.Api;
 using Ginastics.Domain.Model;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Gin = Ginastics.Api.Gin;
 
 namespace Ginastics.Controller
 {
     public static class ApiExtensions
     {
-        public static Gin ToDomain(this GinCreateRequest ginCreateRequest)
+        public static Domain.Model.Gin ToDomain(this GinCreateRequest ginCreateRequest)
         {
-            return new Gin(
+            return new(
                 Guid.NewGuid(),
                 ginCreateRequest.Name,
                 ginCreateRequest.Abv,
@@ -17,15 +19,16 @@ namespace Ginastics.Controller
             );
         }
 
-        public static GinGetResponse ToApi(this Gin gin)
+        public static Gin ToApi(this Domain.Model.Gin gin)
         {
-            return new GinGetResponse(
-                gin.GinId,
-                gin.Name,
-                gin.Abv,
-                gin.Country,
-                gin.Distillery
-            );
+            return new()
+            {
+                GinId = gin.GinId,
+                Name = gin.Name,
+                Abv = gin.Abv,
+                Country = gin.Country,
+                Distillery = gin.Distillery
+            };
         }
     }
 }

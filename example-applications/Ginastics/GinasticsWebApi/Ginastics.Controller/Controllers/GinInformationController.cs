@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Ginastics.Api;
 using Ginastics.Domain;
 using Microsoft.AspNetCore.Http;
@@ -23,21 +24,27 @@ namespace Ginastics.Controller.Controllers
 
             _ginService.Create(domainGin);
 
-            return new CreatedResult($"gin/{domainGin.GinId}", domainGin);
+            return new CreatedResult($"gin/{domainGin.GinId}", domainGin.ToApi());
         }
 
-        [HttpGet("gin/{id?}")]
-        [ProducesResponseType(typeof(GinCreateRequest), StatusCodes.Status200OK)]
-        public IActionResult Get(string id)
+        [HttpGet("gin")]
+        [ProducesResponseType(typeof(AllGins), StatusCodes.Status200OK)]
+        public IActionResult Get()
         {
-            if (string.IsNullOrEmpty(id))
+            var gins = _ginService.Get();
+            return new OkObjectResult(new AllGins
             {
-                return NotFound();
-            }
-
+                Gins = gins.Select(gin => gin.ToApi()).ToList()
+            });
+        }
+        
+        [HttpGet("gin/{id:guid}")]
+        [ProducesResponseType(typeof(Gin), StatusCodes.Status200OK)]
+        public IActionResult Get(Guid id)
+        {
             try
             {
-                var gin = _ginService.Get(Guid.Parse(id));
+                var gin = _ginService.Get(id);
                 if (gin == null)
                 {
                     return new NotFoundResult();
@@ -45,6 +52,7 @@ namespace Ginastics.Controller.Controllers
 
                 return new OkObjectResult(gin.ToApi());
             }
+            
             catch (FormatException)
             {
                 return BadRequest();

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using Ginastics.Domain.Model;
 
 namespace Ginastics.Domain
@@ -19,6 +21,11 @@ namespace Ginastics.Domain
             _informationRepository.Create(gin);
         }
 
+        public IEnumerable<Gin> Get()
+        {
+            return _informationRepository.Get();
+        }
+        
         public Gin Get(Guid guid)
         {
             return _informationRepository.Get(guid);

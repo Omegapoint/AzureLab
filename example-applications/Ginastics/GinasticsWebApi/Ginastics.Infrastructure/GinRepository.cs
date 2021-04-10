@@ -16,6 +16,11 @@ namespace Infrastructure
             _ginDatabase[gin.GinId] = gin;
         }
 
+        public IEnumerable<Gin> Get()
+        {
+            return _ginDatabase.Values;
+        }
+
         public Gin? Get(Guid ginId)
         {
             try
