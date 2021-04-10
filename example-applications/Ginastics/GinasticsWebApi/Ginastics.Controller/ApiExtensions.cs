@@ -1,6 +1,8 @@
 using System;
+using System.Net.Mime;
 using Ginastics.Api;
 using Ginastics.Domain.Model;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Gin = Ginastics.Api.Gin;
 
@@ -28,6 +30,24 @@ namespace Ginastics.Controller
                 Abv = gin.Abv,
                 Country = gin.Country,
                 Distillery = gin.Distillery
+            };
+        }
+
+        public static GinId ToGinId(this Guid guid)
+        {
+            return new(guid);
+        }
+
+        public static ImageId AsImageId(this Guid guid)
+        {
+            return new(guid);
+        }
+
+        public static FileContentResult AsFileContentResult(this Image image)
+        {
+            return new(image.Content, MediaTypeNames.Image.Jpeg)
+            {
+                FileDownloadName = image.FileName
             };
         }
     }

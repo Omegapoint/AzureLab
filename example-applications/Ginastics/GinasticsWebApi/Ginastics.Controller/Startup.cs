@@ -30,6 +30,7 @@ namespace Ginastics.Controller
         {
             services.AddSingleton<GinService>();
             services.AddSingleton<IGinInformationRepository, GinRepository>();
+            services.AddSingleton<IImageRepository, ImageRepository>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

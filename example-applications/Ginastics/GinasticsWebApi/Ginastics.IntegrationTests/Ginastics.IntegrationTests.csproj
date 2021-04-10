@@ -20,4 +20,9 @@
       <ProjectReference Include="..\Ginastics.Api\Ginastics.Api.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+        <Content Include="images\*.*">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
 </Project>
