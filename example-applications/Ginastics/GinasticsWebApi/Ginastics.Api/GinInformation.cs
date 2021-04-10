@@ -1,4 +1,11 @@
+
+using System.Text.Json.Serialization;
+
 namespace Ginastics.Api
 {
-    public record GinInformation(string Name, string Abv, string Country, string Distillery);
+    public record GinInformation(
+        [property:JsonPropertyName("name")] string Name, 
+        [property:JsonPropertyName("abv")] string Abv, 
+        [property:JsonPropertyName("country")] string Country, 
+        [property:JsonPropertyName("distillery")] string Distillery);
 }

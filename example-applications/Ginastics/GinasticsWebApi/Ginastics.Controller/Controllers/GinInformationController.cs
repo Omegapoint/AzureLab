@@ -1,3 +1,4 @@
+using System;
 using Ginastics.Api;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,8 +12,7 @@ namespace Ginastics.Controller.Controllers
         public IActionResult Create([FromBody] GinInformation ginInformation)
         {
             // search
-
-            return new OkObjectResult(ginInformation);
+            return new CreatedResult($"gin/{Guid.NewGuid()}",ginInformation);
         }
 
         [HttpGet("gin/{id?}")]

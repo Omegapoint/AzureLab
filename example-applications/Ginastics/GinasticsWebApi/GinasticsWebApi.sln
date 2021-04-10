@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ginastics.Domain", "Ginasti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ginastics.Infrastructure", "Ginastics.Infrastructure\Ginastics.Infrastructure.csproj", "{3745A843-F203-4ABF-B888-1D99D07DCC58}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ginastics.IntegrationTests", "Ginastics.IntegrationTests\Ginastics.IntegrationTests.csproj", "{72526C56-7B40-4559-B5C7-BE82224EF3D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{3745A843-F203-4ABF-B888-1D99D07DCC58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3745A843-F203-4ABF-B888-1D99D07DCC58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3745A843-F203-4ABF-B888-1D99D07DCC58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72526C56-7B40-4559-B5C7-BE82224EF3D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72526C56-7B40-4559-B5C7-BE82224EF3D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72526C56-7B40-4559-B5C7-BE82224EF3D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72526C56-7B40-4559-B5C7-BE82224EF3D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
