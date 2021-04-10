@@ -30,5 +30,10 @@ namespace Ginastics.Domain
         {
             return _informationRepository.Get(guid);
         }
+
+        public bool Delete(Guid id)
+        {
+            return _informationRepository.Delete(id);
+        }
     }
 }

@@ -10,5 +10,6 @@ namespace Ginastics.Domain
         public void Create(Gin gin);
         public IEnumerable<Gin> Get();
         public Gin? Get(Guid ginId);
+        bool Delete(Guid id);
     }
 }

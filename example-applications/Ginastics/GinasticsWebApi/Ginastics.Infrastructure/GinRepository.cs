@@ -32,5 +32,18 @@ namespace Infrastructure
                 return null;
             }
         }
+
+        public bool Delete(Guid id)
+        {
+            try
+            {
+                _ginDatabase.Remove(id);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

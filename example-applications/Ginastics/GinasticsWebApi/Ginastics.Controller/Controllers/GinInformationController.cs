@@ -7,7 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Ginastics.Controller.Controllers
 {
-    // GinInformation == metadata om specifik gin
+    
+    // upload images
+    // nice to have: reviewController
+    
     public class GinInformationController : ControllerBase
     {
         private readonly GinService _ginService;
@@ -37,7 +40,7 @@ namespace Ginastics.Controller.Controllers
                 Gins = gins.Select(gin => gin.ToApi()).ToList()
             });
         }
-        
+
         [HttpGet("gin/{id:guid}")]
         [ProducesResponseType(typeof(Gin), StatusCodes.Status200OK)]
         public IActionResult Get(Guid id)
@@ -52,7 +55,7 @@ namespace Ginastics.Controller.Controllers
 
                 return new OkObjectResult(gin.ToApi());
             }
-            
+
             catch (FormatException)
             {
                 return BadRequest();
@@ -60,15 +63,14 @@ namespace Ginastics.Controller.Controllers
         }
 
         [HttpDelete("gin/{id}")]
-        public IActionResult Delete(string id)
+        public IActionResult Delete(Guid id)
         {
-            return new NoContentResult();
-        }
+            if (_ginService.Delete(id))
+            {
+                return new NoContentResult();
+            }
 
-        [HttpPut("gin/{id}")]
-        public IActionResult Modify(string id, [FromBody] GinCreateRequest ginCreateRequest)
-        {
-            return new OkResult();
+            return new NotFoundResult();
         }
     }
 }
