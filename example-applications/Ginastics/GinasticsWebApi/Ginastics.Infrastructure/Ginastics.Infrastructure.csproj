@@ -5,4 +5,12 @@
         <RootNamespace>Infrastructure</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Ginastics.Domain\Ginastics.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Data.Sqlite" Version="5.0.5" />
+    </ItemGroup>
+
 </Project>

@@ -12,6 +12,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Ginastics.Api\Ginastics.Api.csproj" />
+      <ProjectReference Include="..\Ginastics.Domain\Ginastics.Domain.csproj" />
+      <ProjectReference Include="..\Ginastics.Infrastructure\Ginastics.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

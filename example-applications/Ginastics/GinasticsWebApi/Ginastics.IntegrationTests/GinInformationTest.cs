@@ -16,34 +16,41 @@ namespace Ginastics.IntegrationTests
         [Test]
         public void ShouldCreateGin()
         {
-            var request = new RestRequest(new Uri($"{Host}/gin"), Method.POST, DataFormat.Json);
-            request.AddJsonBody(GivenGinInformation());
-            var response = _httpClient.Post<GinInformation>(request);
-
+            var restRequest = new RestRequest(new Uri($"{Host}/gin"), Method.POST, DataFormat.Json);
+            restRequest.AddJsonBody(GivenGinInformation());
+            var response = _httpClient.Post<GinCreateRequest>(restRequest);
             response.StatusCode.Should().Be(HttpStatusCode.Created);
         }
+
 
         [Test]
         public void ShouldGetAllGin()
         {
             var request = new RestRequest(new Uri($"{Host}/gin"), Method.GET, DataFormat.Json);
-            var response = _httpClient.Get<GinInformation>(request);
+            var response = _httpClient.Get<GinCreateRequest>(request);
 
             response.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
-        
+
         [Test]
-        public void ShouldGetGin()
+        public void ShouldGetCreatedGin()
+        {
+            var gin = GivenGinInDatabase();
+            var request = new RestRequest(new Uri($"{Host}/gin/{gin.GinId}"), Method.GET, DataFormat.Json);
+            var response = _httpClient.Get<GinCreateRequest>(request);
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+        }
+
+        [Test]
+        public void ShouldNotGetGin()
         {
             var id = Guid.NewGuid();
             var request = new RestRequest(new Uri($"{Host}/gin/{id}"), Method.GET, DataFormat.Json);
-            var response = _httpClient.Get<GinInformation>(request);
+            var response = _httpClient.Get<GinCreateRequest>(request);
 
-            response.StatusCode.Should().Be(HttpStatusCode.OK);
-
-            JsonSerializer.Deserialize<GinInformation>(response.Content).Should().Be(ExpectedGin());
+            response.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
-        
+
         [Test]
         public void ShouldDeleteGin()
         {
@@ -60,20 +67,29 @@ namespace Ginastics.IntegrationTests
             var id = Guid.NewGuid();
             var request = new RestRequest(new Uri($"{Host}/gin/{id}"), Method.PUT, DataFormat.Json);
             request.AddJsonBody(GivenGinInformation());
-            var response = _httpClient.Put<GinInformation>(request);
+            var response = _httpClient.Put<GinCreateRequest>(request);
 
             response.StatusCode.Should().Be(HttpStatusCode.OK);
         }
-        
-        
-        private static GinInformation GivenGinInformation()
+
+
+        private static GinCreateRequest GivenGinInformation()
         {
             return new("Hendricks", "1000", "swe", "hendricks");
         }
-        
-        private static GinInformation ExpectedGin()
+
+        private static GinCreateRequest ExpectedGin()
         {
-            return new ("Hendricks", "1000", "swe", "hendricks");
+            return new("Hendricks", "1000", "swe", "hendricks");
+        }
+
+        private GinGetResponse GivenGinInDatabase()
+        {
+            var restRequest = new RestRequest(new Uri($"{Host}/gin"), Method.POST, DataFormat.Json);
+            restRequest.AddJsonBody(GivenGinInformation());
+            var response = _httpClient.Post<GinCreateRequest>(restRequest);
+
+            return JsonSerializer.Deserialize<GinGetResponse>(response.Content);
         }
     }
 }

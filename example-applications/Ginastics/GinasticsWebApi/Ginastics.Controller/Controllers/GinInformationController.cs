@@ -1,5 +1,6 @@
 using System;
 using Ginastics.Api;
+using Ginastics.Domain;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,24 +9,46 @@ namespace Ginastics.Controller.Controllers
     // GinInformation == metadata om specifik gin
     public class GinInformationController : ControllerBase
     {
-        [HttpPost("gin")]
-        public IActionResult Create([FromBody] GinInformation ginInformation)
+        private readonly GinService _ginService;
+
+        public GinInformationController(GinService ginService)
         {
-            // search
-            return new CreatedResult($"gin/{Guid.NewGuid()}",ginInformation);
+            _ginService = ginService ?? throw new ArgumentNullException(nameof(ginService));
+        }
+
+        [HttpPost("gin")]
+        public IActionResult Create([FromBody] GinCreateRequest ginCreateRequest)
+        {
+            var domainGin = ginCreateRequest.ToDomain();
+
+            _ginService.Create(domainGin);
+
+            return new CreatedResult($"gin/{domainGin.GinId}", domainGin);
         }
 
         [HttpGet("gin/{id?}")]
-        [ProducesResponseType(typeof(GinInformation), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(GinCreateRequest), StatusCodes.Status200OK)]
         public IActionResult Get(string id)
         {
-            // gin/:id?
             if (string.IsNullOrEmpty(id))
             {
                 return NotFound();
             }
 
-            return new OkObjectResult(new GinInformation("Hendricks", "1000", "swe", "hendricks"));
+            try
+            {
+                var gin = _ginService.Get(Guid.Parse(id));
+                if (gin == null)
+                {
+                    return new NotFoundResult();
+                }
+
+                return new OkObjectResult(gin.ToApi());
+            }
+            catch (FormatException)
+            {
+                return BadRequest();
+            }
         }
 
         [HttpDelete("gin/{id}")]
@@ -35,7 +58,7 @@ namespace Ginastics.Controller.Controllers
         }
 
         [HttpPut("gin/{id}")]
-        public IActionResult Modify(string id, [FromBody] GinInformation ginInformation)
+        public IActionResult Modify(string id, [FromBody] GinCreateRequest ginCreateRequest)
         {
             return new OkResult();
         }
