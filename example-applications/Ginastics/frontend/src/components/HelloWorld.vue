@@ -72,13 +72,20 @@
                 </v-row>
             </v-col>
         </v-row>
+        <v-row>
+            <gin-form></gin-form>
+        </v-row>
     </v-container>
 </template>
 
 <script>
+import GinForm from "./UploadGin";
+
 export default {
     name: "HelloWorld",
-
+    components: {
+        GinForm,
+    },
     data: () => ({
         ecosystem: [
             {

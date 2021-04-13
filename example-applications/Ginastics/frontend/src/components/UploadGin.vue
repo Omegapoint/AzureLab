@@ -1,11 +1,51 @@
 <template>
-    <form action="">
-        <input type="text" name="name" v-model="name" />
-        <input type="text" name="distillery" v-model="distillery" />
-        <input type="text" name="abv" id="" v-model="abv" />
-        <input type="text" name="country" id="" v-model="country" />
-        <button @click="this.uploadGin()">Submit</button>
-    </form>
+    <v-form action="">
+        <v-container>
+            <v-row>
+                <v-col cols="12" sm="6" md="3">
+                    <v-text-field
+                        type="text"
+                        name="name"
+                        v-model="name"
+                        filled
+                    />
+                </v-col>
+                <v-col cols="12" sm="6" md="3">
+                    <v-text-field
+                        type="text"
+                        name="distillery"
+                        v-model="distillery"
+                        label="Regular"
+                        placeholder="Distillery"
+                        filled
+                    />
+                </v-col>
+            </v-row>
+            <v-row>
+                <v-col cols="12" sm="6" md="3">
+                    <v-text-field
+                        type="text"
+                        name="abv"
+                        id=""
+                        v-model="abv"
+                        filled
+                /></v-col>
+                <v-col cols="12" sm="6" md="3">
+                    <v-text-field
+                        type="text"
+                        name="country"
+                        id=""
+                        v-model="country"
+                        filled
+                /></v-col>
+            </v-row>
+            <v-row>
+                <v-btn color="success" class="mr-4" @click="this.uploadGin()"
+                    >Submit</v-btn
+                >
+            </v-row>
+        </v-container>
+    </v-form>
 </template>
 
 <script>
