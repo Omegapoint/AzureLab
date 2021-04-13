@@ -1,0 +1,6 @@
+{
+  "formatOnSave": true,
+  "semi": true,
+  "trailingComma": "es5",
+  "tabWidth": 4
+}
