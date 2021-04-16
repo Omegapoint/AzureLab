@@ -1,14 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ginastics.Controller", "Ginastics.Controller\Ginastics.Controller.csproj", "{401EC851-B4F3-4EF3-AEF5-BF4905E1E3BF}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ginastics.Controller", "Ginastics.Controller\Ginastics.Controller.csproj", "{401EC851-B4F3-4EF3-AEF5-BF4905E1E3BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ginastics.Api", "Ginastics.Api\Ginastics.Api.csproj", "{14513FED-B470-45D8-9102-AB9E6CCFD683}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ginastics.Api", "Ginastics.Api\Ginastics.Api.csproj", "{14513FED-B470-45D8-9102-AB9E6CCFD683}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ginastics.Domain", "Ginastics.Domain\Ginastics.Domain.csproj", "{DF15F002-0A92-4906-8E6E-EEC3F5824D09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ginastics.Domain", "Ginastics.Domain\Ginastics.Domain.csproj", "{DF15F002-0A92-4906-8E6E-EEC3F5824D09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ginastics.Infrastructure", "Ginastics.Infrastructure\Ginastics.Infrastructure.csproj", "{3745A843-F203-4ABF-B888-1D99D07DCC58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ginastics.Infrastructure", "Ginastics.Infrastructure\Ginastics.Infrastructure.csproj", "{3745A843-F203-4ABF-B888-1D99D07DCC58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ginastics.IntegrationTests", "Ginastics.IntegrationTests\Ginastics.IntegrationTests.csproj", "{72526C56-7B40-4559-B5C7-BE82224EF3D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ginastics.IntegrationTests", "Ginastics.IntegrationTests\Ginastics.IntegrationTests.csproj", "{72526C56-7B40-4559-B5C7-BE82224EF3D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ginastics.Functions", "Ginastics.Functions\Ginastics.Functions.csproj", "{F81269F8-96B2-49D2-A501-1E7BD33466A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,5 +41,15 @@ Global
 		{72526C56-7B40-4559-B5C7-BE82224EF3D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72526C56-7B40-4559-B5C7-BE82224EF3D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72526C56-7B40-4559-B5C7-BE82224EF3D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F81269F8-96B2-49D2-A501-1E7BD33466A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F81269F8-96B2-49D2-A501-1E7BD33466A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F81269F8-96B2-49D2-A501-1E7BD33466A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F81269F8-96B2-49D2-A501-1E7BD33466A2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7273F55F-BFBA-4862-9EFF-56BE0C54F6C3}
 	EndGlobalSection
 EndGlobal
